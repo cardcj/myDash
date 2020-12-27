@@ -22,7 +22,7 @@ const NavButton = styled('li')`
 	}
 `
 
-const NavBar = styled('ul')`
+const NavBar = styled('nav')`
 	width: 80%;
 	margin: 0 auto;
 	text-align: center;
@@ -31,7 +31,7 @@ const NavBar = styled('ul')`
 
 const Navigation = () => {
 	return (
-		<NavBar>
+		<NavBar role="navigation">
 			<NavButton>To-Do</NavButton>
 			<NavButton>Journal</NavButton>
 			<NavButton>Finances</NavButton>
