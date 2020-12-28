@@ -14,19 +14,55 @@ const InputNewTask = styled('input')`
 
 const BtnCreateTask = styled('button')`
     padding: 10px;
-    border: none;
+    border: thin #000000 solid;
     border-radius: 3px;
     font-family: 'Acme', sans-serif;
     font-size: 16px;
     background-color: #E56399;
     color: #320E3B;
+    &:hover {
+        background-color: #7FEFBD;
+        cursor: pointer; 
+    }
 `
 
 const Todos = () => {
+    let [tasks, setTasks] = React.useState([]);
+    let [newTask, setNewTask] = React.useState("");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNewTask(e.currentTarget.value);
+    };
+    
+    const handleSubmit = () => {
+        setTasks([newTask, ...tasks]);
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // If the key pressed while the input is focused is the Enter key then call handleSubmit
+        if(e.key === "Enter") {
+            handleSubmit();
+        }
+    };
+
+    const renderTasks = () => {
+        return tasks.map((task, taskId) => { return <li key={taskId} className="todoTasks">{task}</li> });
+    };
+
     return (
         <div>
-            <InputNewTask placeholder="Enter a new task here"></InputNewTask>
-            <BtnCreateTask>Create Task</BtnCreateTask>
+            <InputNewTask 
+                placeholder="Enter a new task here"
+                onChange={handleChange}
+                onKeyPress={handleKeyPress}
+                value={newTask}
+            />
+            <BtnCreateTask onClick={handleSubmit}>
+                Create Task
+            </BtnCreateTask>
+            <ul>
+                { renderTasks() }
+            </ul>
         </div>
     );
 }
