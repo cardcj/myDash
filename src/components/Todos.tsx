@@ -26,6 +26,20 @@ const BtnCreateTask = styled('button')`
     }
 `
 
+const TodoTask = styled('li')`
+    text-align: left;
+	padding: 10px;
+    margin: 10px;
+    background-color: #7FEFBD;
+	color: #1A535C;
+	font-size: 20px;
+	list-style: none;
+	cursor: grab;
+	&:hover {
+        background-color: #6EDEAC;
+    }
+`
+
 const Todos = () => {
     let [tasks, setTasks] = React.useState([]);
     let [newTask, setNewTask] = React.useState("");
@@ -36,6 +50,7 @@ const Todos = () => {
     
     const handleSubmit = () => {
         setTasks([newTask, ...tasks]);
+        setNewTask("");
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -46,7 +61,11 @@ const Todos = () => {
     };
 
     const renderTasks = () => {
-        return tasks.map((task, taskId) => { return <li key={taskId} className="todoTasks">{task}</li> });
+        return tasks.map((task, taskId) => { 
+            return (
+                <TodoTask key={taskId}><input type="checkbox" />{task}</TodoTask>
+            )
+        });
     };
 
     return (
