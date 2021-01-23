@@ -40,47 +40,34 @@ const TodoTask = styled('li')`
     }
 `
 
-const Todos = () => {
-    let [tasks, setTasks] = React.useState([]);
-    let [newTask, setNewTask] = React.useState("");
+const ValidationText = styled('p')`
+    color: #ff0000;
+    display: ${props => props.errorText.shouldShow};
+`
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTask(e.currentTarget.value);
-    };
-    
-    const handleSubmit = () => {
-        setTasks([newTask, ...tasks]);
-        setNewTask("");
-    };
+const renderTasks = (tasks) => {
+    return tasks.map((task, taskId) => { 
+        return (
+            <TodoTask key={taskId}><input type="checkbox" />{task}</TodoTask>
+        )
+    });
+};
 
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        // If the key pressed while the input is focused is the Enter key then call handleSubmit
-        if(e.key === "Enter") {
-            handleSubmit();
-        }
-    };
-
-    const renderTasks = () => {
-        return tasks.map((task, taskId) => { 
-            return (
-                <TodoTask key={taskId}><input type="checkbox" />{task}</TodoTask>
-            )
-        });
-    };
-
+const Todos = (props:React.ComponentProps<any>) => {
     return (
         <div>
             <InputNewTask 
                 placeholder="Enter a new task here"
-                onChange={handleChange}
-                onKeyPress={handleKeyPress}
-                value={newTask}
+                onChange={props.handleChange}
+                onKeyPress={props.handleKeyPress}
+                value={props.newTask}
             />
-            <BtnCreateTask onClick={handleSubmit}>
+            <BtnCreateTask onClick={props.handleSubmit}>
                 Create Task
             </BtnCreateTask>
+            <ValidationText >{props.errorText.text}</ValidationText>
             <ul>
-                { renderTasks() }
+                { props.renderTasks() }
             </ul>
         </div>
     );
