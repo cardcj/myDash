@@ -1,5 +1,17 @@
+/** @jsx jsx */
 import * as React from 'react';
 import styled from '@emotion/styled';
+import { css, jsx } from '@emotion/react';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+
+type TodoProps = {
+    tasks:string[],
+    newTask:string,
+    handleChange:React.ChangeEventHandler,
+    handleKeyPress:React.KeyboardEventHandler,
+    handleSubmit:React.MouseEventHandler,
+    errorText:{text:string, display:string}
+}
 
 const InputNewTask = styled('input')`
     width: 80%;
@@ -40,20 +52,26 @@ const TodoTask = styled('li')`
     }
 `
 
-const ValidationText = styled('p')`
-    color: #ff0000;
-    display: ${props => props.errorText.shouldShow};
-`
+const ValidationText = (props:TodoProps):ReactJSXElement => (
+    <p
+        css={css`
+        color: #ff0000;
+        display: ${props.errorText.display};
+        `}
+    >
+        {props.errorText.text}
+    </p>
+)
 
-const renderTasks = (tasks) => {
-    return tasks.map((task, taskId) => { 
+const renderTasks = (tasks:string[]) => {
+    return tasks.map((task:string, taskId:number) => { 
         return (
             <TodoTask key={taskId}><input type="checkbox" />{task}</TodoTask>
         )
     });
 };
 
-const Todos = (props:React.ComponentProps<any>) => {
+const Todos = (props:TodoProps) => {
     return (
         <div>
             <InputNewTask 
@@ -65,9 +83,9 @@ const Todos = (props:React.ComponentProps<any>) => {
             <BtnCreateTask onClick={props.handleSubmit}>
                 Create Task
             </BtnCreateTask>
-            <ValidationText >{props.errorText.text}</ValidationText>
+            <ValidationText {...props} />
             <ul>
-                { props.renderTasks() }
+                { renderTasks(props.tasks) }
             </ul>
         </div>
     );

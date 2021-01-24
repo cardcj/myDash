@@ -14,6 +14,10 @@ const TodosContainer = () => {
         if (newTask !== "") {
             setTasks([newTask, ...tasks]);
             setNewTask("");
+            setErrorText({
+                text:"",
+                display: "none"
+            })
         } else {
             setErrorText({
                 text: "* To create a new task you must enter a value",
@@ -32,6 +36,7 @@ const TodosContainer = () => {
     return (
         <Todos 
             tasks={tasks}
+            newTask={newTask}
             handleChange={handleChange}
             handleKeyPress={handleKeyPress}
             handleSubmit={handleSubmit}

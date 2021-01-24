@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import Navigation from './components/Navigation';
-import Todos from './components/Todos';
+import TodosContainer from './containers/TodosContainer';
 
 const Container = styled('div')`
     width: 80%;
@@ -34,7 +34,7 @@ class App extends React.Component {
                 />
                 <Navigation />
                 <Container>
-                    <Todos />
+                    <TodosContainer />
                 </Container>
             </div>
         );
