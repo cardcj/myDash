@@ -53,14 +53,15 @@ const TodoTask = styled('li')`
 `
 
 const ValidationText = (props:TodoProps):ReactJSXElement => (
-    <p
+    <span
         css={css`
         color: #ff0000;
         display: ${props.errorText.display};
         `}
+        data-testid="inputError"
     >
         {props.errorText.text}
-    </p>
+    </span>
 )
 
 const renderTasks = (tasks:string[]) => {
@@ -80,7 +81,7 @@ const Todos = (props:TodoProps) => {
                 onKeyPress={props.handleKeyPress}
                 value={props.newTask}
             />
-            <BtnCreateTask onClick={props.handleSubmit}>
+            <BtnCreateTask onClick={props.handleSubmit} role="button">
                 Create Task
             </BtnCreateTask>
             <ValidationText {...props} />

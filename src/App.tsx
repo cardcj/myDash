@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Global } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -42,4 +42,4 @@ class App extends React.Component {
     };
 }
     
-ReactDOM.render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
