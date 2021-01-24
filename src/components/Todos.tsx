@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/react';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
-type TodoProps = {
+interface TodoProps {
     tasks:string[],
     newTask:string,
     handleChange:React.ChangeEventHandler,
