@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { Global } from '@emotion/react';
 import styled from '@emotion/styled';
-
+// Importing Components
 import Navigation from './components/Navigation';
 import TodosContainer from './containers/TodosContainer';
 
+// Styling the container of the app content
 const Container = styled('div')`
     width: 80%;
     text-align: center;
@@ -19,6 +20,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                {/* Using Emotion Global styles for basic styling and setting the overall font */}
                 <Global
                     styles={{
                         body: {
@@ -41,5 +43,6 @@ class App extends React.Component {
         );
     };
 }
-    
+
+// Rendering the overall App
 render(<App />, document.getElementById('root'));
