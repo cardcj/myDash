@@ -2,7 +2,7 @@
   "name": "mydash",
   "version": "0.0.1",
   "description": "Personal dashboard",
-  "main": "index.js",
+  "main": "App.tsx",
   "scripts": {
     "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
