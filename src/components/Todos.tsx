@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { css, jsx } from '@emotion/react';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
+// Interface to make sure that only the correct props can be passed
 interface TodoProps {
     tasks:string[],
     newTask:string,
@@ -13,6 +14,7 @@ interface TodoProps {
     errorText:{text:string, display:string}
 }
 
+// Styling the new task input
 const InputNewTask = styled('input')`
     width: 80%;
     margin: 20px;
@@ -23,7 +25,7 @@ const InputNewTask = styled('input')`
         box-shadow: 0 0 2px 0 #E56399;
     }
 `
-
+// Styling the submit button
 const BtnCreateTask = styled('button')`
     padding: 10px;
     border: thin #000000 solid;
@@ -37,7 +39,7 @@ const BtnCreateTask = styled('button')`
         cursor: pointer; 
     }
 `
-
+// Styling the tasks in the task list
 const TodoTask = styled('li')`
     text-align: left;
 	padding: 10px;
@@ -52,6 +54,7 @@ const TodoTask = styled('li')`
     }
 `
 
+// Providing the JSX and styling needed for the error text
 const ValidationText = (props:TodoProps):ReactJSXElement => (
     <span
         css={css`
@@ -64,6 +67,7 @@ const ValidationText = (props:TodoProps):ReactJSXElement => (
     </span>
 )
 
+// Function to render the tasks list using the tasks passed through props
 const renderTasks = (tasks:string[]) => {
     return tasks.map((task:string, taskId:number) => { 
         return (
@@ -72,20 +76,25 @@ const renderTasks = (tasks:string[]) => {
     });
 };
 
+// JSX for the elements that make up the Todos component
 const Todos = (props:TodoProps) => {
     return (
         <div>
+            {/* Single line text input using event handlers and value from props */}
             <InputNewTask 
                 placeholder="Enter a new task here"
                 onChange={props.handleChange}
                 onKeyPress={props.handleKeyPress}
                 value={props.newTask}
             />
+            {/* Submit button using onClick handler from props */}
             <BtnCreateTask onClick={props.handleSubmit} role="button">
                 Create Task
             </BtnCreateTask>
+            {/* Error text element taking attributes from props */}
             <ValidationText {...props} />
             <ul>
+                {/* Render all tasks passed through props */}
                 { renderTasks(props.tasks) }
             </ul>
         </div>

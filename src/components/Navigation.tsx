@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
+// Styling the individual navigation buttons
 const NavButton = styled('li')`
 	display:inline-block;
 	text-align: center;
@@ -23,6 +24,7 @@ const NavButton = styled('li')`
 	}
 `
 
+// Styling the overall navbar
 const NavBar = styled('nav')`
 	position: relative;
 	width: 80%;
@@ -33,6 +35,7 @@ const NavBar = styled('nav')`
 	box-shadow: 0px 5px 5px -6px #1A535C;
 `
 
+// JSX for the navbar
 const Navigation = () => {
 	return (
 		<NavBar role="navigation">
