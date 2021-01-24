@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks against last snapshot 1`] = `
+<nav
+  className="css-xy7zbc"
+  role="navigation"
+>
+  <li
+    className="css-1z0o9ve"
+  >
+    To-Do
+  </li>
+  <li
+    className="css-1z0o9ve"
+  >
+    Journal
+  </li>
+  <li
+    className="css-1z0o9ve"
+  >
+    Finances
+  </li>
+  <li
+    className="css-1z0o9ve"
+  >
+    Timetable
+  </li>
+</nav>
+`;
