@@ -3,9 +3,10 @@ import styled from '@emotion/styled';
 
 const NavButton = styled('li')`
 	display:inline-block;
-	text-align: center
+	text-align: center;
 	padding: 10px;
 	margin: 10px;
+	color: #320E3B;
 	font-family: 'Acme', sans-serif;
 	font-size: 20px;
 	list-style: none;
@@ -13,7 +14,7 @@ const NavButton = styled('li')`
 	&:after {
 		display: block;
 		content: '';
-		border-bottom: 2px aquamarine solid;
+		border-bottom: 2px #7FEFBD solid;
 		transform: scaleX(0);
 		transition: transform 200ms ease-in-out;
 	}
@@ -22,16 +23,19 @@ const NavButton = styled('li')`
 	}
 `
 
-const NavBar = styled('ul')`
+const NavBar = styled('nav')`
+	position: relative;
 	width: 80%;
 	margin: 0 auto;
 	text-align: center;
-	border-bottom: thin lightgrey solid;
+	z-index: 10;
+	background-color: #7F96FF;
+	box-shadow: 0px 5px 5px -6px #1A535C;
 `
 
 const Navigation = () => {
 	return (
-		<NavBar>
+		<NavBar role="navigation">
 			<NavButton>To-Do</NavButton>
 			<NavButton>Journal</NavButton>
 			<NavButton>Finances</NavButton>
